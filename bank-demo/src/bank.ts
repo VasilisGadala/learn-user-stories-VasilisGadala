@@ -15,11 +15,11 @@ export default class Bank {
     private accounts: BankAccount[] = [];
 
     /**
-     * creates a new account with a unique account number
-     * @param name -- name of the customer
-     * @param age -- age of the customer
-     * @param accountNumber -- account number of the customer
-     * @returns BankAccount - the created account
+     * Creates a new account with a unique account number
+     * @param {string} name - Name of the customer
+     * @param {number} age - Age of the customer
+     * @param {string} accountNumber - Account number of the customer
+     * @returns {BankAccount} - The created account
      */
     public createAccount(name: string, age: number, accountNumber: string): BankAccount | undefined{
         const isAccExists = this.findAccount(accountNumber);
@@ -37,9 +37,22 @@ export default class Bank {
     }
 
     /**
+     * Method to get the balance of an account in the bank
+     * @param {string} accountNumber - Account number of bank account in the bank
+     * @returns balance - The current balance of the specified bank account if it exists
+     */
+    public getAccountBalance(accountNumber: string): number | undefined {
+        const account = this.findAccount(accountNumber);
+        if (!account) {
+            throw new Error("Account does not exist");
+        }
+        return account.balance;
+    }
+
+    /**
      * Method to find account in the bank
-     * @param {string} accountNumber Account number of bank account in the Bank
-     * @returns BankAccount the existing account if it exists
+     * @param {string} accountNumber - Account number of bank account in the Bank
+     * @returns BankAccount - The existing account if it exists
      */
     private findAccount(accountNumber: string): BankAccount | undefined {
         return this.accounts.find(account => account.accountNumber === accountNumber);
