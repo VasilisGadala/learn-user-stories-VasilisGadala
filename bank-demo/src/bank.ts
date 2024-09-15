@@ -62,6 +62,18 @@ export default class Bank {
         account.balance += money;
     }
 
+    public withdraw(accountNumber: string, money: number): void | undefined {
+        const account = this.findAccount(accountNumber);
+        if (!account) {
+            throw new Error("Account does not exist");
+        }
+        if (account.balance >= money) {
+            account.balance -= money;
+        } else {
+            throw new Error("Attempted to withdraw more money than the account holds")
+        }
+    }
+
     /**
      * Method to find account in the bank
      * @param {string} accountNumber - Account number of bank account in the Bank

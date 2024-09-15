@@ -63,3 +63,30 @@ try {
 }
 
 console.log();
+
+// Withdraw Money Tests:
+console.log("Withdraw Money Tests:")
+
+// scenario 1:
+bank.withdraw("45678", 10);
+if (bank.getAccountBalance("45678") === 10) {
+    console.log("Scenario 1 passed");
+} else {
+    console.log("Scenario 1 failed");
+}
+
+// scenario 2:
+try {
+    bank.withdraw("0", 10);
+    console.log("Scenario 2 failed");
+} catch (_) {
+    console.log("Scenario 2 passed");
+}
+
+// scenario 3:
+try {
+    bank.withdraw("45678", 11);
+    console.log("Scenario 3 failed");
+} catch (_) {
+    console.log("Scenario 3 passed");
+}
