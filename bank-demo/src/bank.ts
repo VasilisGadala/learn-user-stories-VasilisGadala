@@ -50,6 +50,19 @@ export default class Bank {
     }
 
     /**
+     * Method to deposit money into an account in the bank
+     * @param {string} accountNumber - Account number of a bank account in the bank
+     * @param {number} money - Amount of money to be deposited into the bank account
+     */
+    public deposit(accountNumber: string, money: number): void | undefined {
+        const account = this.findAccount(accountNumber);
+        if (!account) {
+            throw new Error("Account does not exist");
+        }
+        account.balance += money;
+    }
+
+    /**
      * Method to find account in the bank
      * @param {string} accountNumber - Account number of bank account in the Bank
      * @returns BankAccount - The existing account if it exists

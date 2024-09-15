@@ -43,3 +43,23 @@ try {
 }
 
 console.log();
+
+// Deposit Money Tests:
+console.log("Deposit Money Tests:")
+
+// scenario 1:
+bank.deposit("45678", 20);
+if (bank.getAccountBalance("45678") === 20) {
+    console.log("Scenario 1 passed");
+} else {
+    console.log("Scenario 1 failed");
+}
+
+try {
+    bank.deposit("0", 20);
+    console.log("Scenario 2 failed");
+} catch (_) {
+    console.log("Scenario 2 passed");
+}
+
+console.log();
